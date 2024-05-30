@@ -5,18 +5,18 @@ import { ViteEjsPlugin } from "vite-plugin-ejs";
 import { VitePWA } from "vite-plugin-pwa";
 import checker from "vite-plugin-checker";
 import { createHtmlPlugin } from "vite-plugin-html";
-// import fs from "fs";
-// import path from "path";
+import fs from "fs";
+import path from "path";
 
 // To load .env.local variables
 const envVars = loadEnv("", `../`);
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    // https: {
-    //   key: fs.readFileSync(path.resolve(__dirname, 'path/to/localhost-key.pem')),
-    //   cert: fs.readFileSync(path.resolve(__dirname, 'path/to/localhost.pem')),
-    // },
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, '/home/rodolfo/certs/key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, '/home/rodolfo/certs/cert.pem')),
+    },
     port: Number(envVars.VITE_APP_PORT || 3000),
     // open the browser
     //open: true,
